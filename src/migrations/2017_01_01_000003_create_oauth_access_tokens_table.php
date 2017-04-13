@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOAuthAccessTokensTable extends Migration
+class CreateOauthAccessTokensTable extends Migration
 {
     /**
      * Run the migrations.
