@@ -49,7 +49,7 @@ class CreateClientCommand extends Command
                 'secret' => (string) $this->getClientSecret(),
                 'name' => $this->option('name') ?: $this->ask('Please enter a name'),
                 'redirect_uri' => $this->option('redirect_uri')
-            ]);
+            ])->scopes()->sync($this->argument('scope'));
         } catch (Exception $e) {
             $this->error("An error occurred: {$e->getMessage()}");
             return 1;
