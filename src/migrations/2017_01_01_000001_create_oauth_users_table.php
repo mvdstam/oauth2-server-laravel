@@ -14,7 +14,7 @@ class CreateOauthUsersTable extends Migration
     public function up()
     {
         Schema::create('oauth2_users', function(Blueprint $table) {
-            $table->char('id', 40)->primary();
+            $table->char('id', 36)->primary();
             $table->string('username')->unique();
             $table->string('password');
             $table->timestamps();
