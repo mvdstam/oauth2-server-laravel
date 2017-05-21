@@ -3,8 +3,6 @@
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/0d91d830-148e-4013-8c6c-e128b8efc4de/mini.png)](https://insight.sensiolabs.com/projects/0d91d830-148e-4013-8c6c-e128b8efc4de)
 
-**Please note that this repository is under construction. This package is NOT ready for usage yet.**
-
 This package forms the link between your Laravel (or Lumen) application and the [league/oauth2-server](https://github.com/thephpleague/oauth2-server) package.
 
 The goals of this package are as follows:
