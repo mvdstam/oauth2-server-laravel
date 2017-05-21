@@ -7,8 +7,8 @@ use League\OAuth2\Server\ResourceServer;
 use Mockery;
 use Mockery\Mock;
 use Mvdstam\Oauth2ServerLaravel\Tests\TestCase;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class OAuth2MiddlewareTest extends TestCase
 {
@@ -55,10 +55,10 @@ class OAuth2MiddlewareTest extends TestCase
         $next = function($request) {
             $this->assertInstanceOf(Request::class, $request);
 
-            return app(ResponseInterface::class);
+            return app(Response::class);
         };
 
-        $this->assertInstanceOf(ResponseInterface::class, $this->middleware->handle($this->request, $next));
+        $this->assertInstanceOf(Response::class, $this->middleware->handle($this->request, $next));
     }
 
 }
