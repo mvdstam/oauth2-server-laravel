@@ -6,6 +6,7 @@ use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Signer\Key;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
 use Mvdstam\Oauth2ServerLaravel\Providers\Oauth2ServerServiceProvider;
+use Orchestra\Database\ConsoleServiceProvider;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -23,7 +24,8 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            Oauth2ServerServiceProvider::class
+            Oauth2ServerServiceProvider::class,
+            ConsoleServiceProvider::class,
         ];
     }
 
