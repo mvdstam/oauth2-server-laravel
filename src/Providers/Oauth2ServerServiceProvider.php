@@ -27,6 +27,7 @@ use League\OAuth2\Server\ResourceServer;
 use Mvdstam\Oauth2ServerLaravel\Commands\CreateClientCommand;
 use Mvdstam\Oauth2ServerLaravel\Commands\CreateScopeCommand;
 use Mvdstam\Oauth2ServerLaravel\Commands\CreateUserCommand;
+use Mvdstam\Oauth2ServerLaravel\Commands\GenerateKeyPairCommand;
 use Mvdstam\Oauth2ServerLaravel\Contracts\JWTFactoryInterface;
 use Mvdstam\Oauth2ServerLaravel\Entities\AccessToken;
 use Mvdstam\Oauth2ServerLaravel\Entities\AuthCode;
@@ -197,7 +198,8 @@ class Oauth2ServerServiceProvider extends ServiceProvider
             $this->commands([
                 CreateScopeCommand::class,
                 CreateClientCommand::class,
-                CreateUserCommand::class
+                CreateUserCommand::class,
+                GenerateKeyPairCommand::class,
             ]);
         }
 

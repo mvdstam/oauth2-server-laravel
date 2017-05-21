@@ -10,8 +10,8 @@ return [
      * anyone.
      */
     'key' => [
-        'public' => 'public.pem',
-        'private' => 'private.pem',
+        'public' => storage_path('app/oauth2-server/public.pem'),
+        'private' => storage_path('app/oauth2-server/private.pem'),
         'passphrase' => null
     ],
 
