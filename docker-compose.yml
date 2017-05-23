@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2'
 
 services:
   app:
@@ -7,11 +7,10 @@ services:
       - .:/var/www/html
     restart: unless-stopped
     depends_on:
-      mysql:
-        condition: service_healthy
+      - mysql
 
   mysql:
-    image: healthcheck/mysql
+    image: mysql:5.7
     restart: unless-stopped
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
