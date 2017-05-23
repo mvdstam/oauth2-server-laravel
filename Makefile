@@ -1,8 +1,11 @@
+all: deps docker
+
+.PHONY: deps docker phpunit phpunit-coverage-html phpunit-coverage-clover docs tables
+
 deps:
-	docker-compose run --rm app sh -c 'cd /var/www/html ; php -r "copy(\"https://getcomposer.org/installer\", \"composer-setup.php\");"; php composer-setup.php --quiet; php composer.phar install; rm composer.phar composer-setup.php;  (exit $?)'
+	docker run --rm -ti -v `pwd`:/app composer install
 
 docker:
-	docker build --tag oauth2-server-laravel .
 	docker-compose stop
 	docker-compose rm -f
 	docker-compose up -d --force-recreate --remove-orphans mysql
