@@ -5,12 +5,12 @@ namespace Mvdstam\Oauth2ServerLaravel\Http\Middleware;
 
 
 use Closure;
+use Illuminate\Http\Request;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\Middleware\ResourceServerMiddleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class OAuth2Middleware extends ResourceServerMiddleware
@@ -46,15 +46,7 @@ class OAuth2Middleware extends ResourceServerMiddleware
                  * Normalize request and continue normal operation
                  */
                 return $next(
-                    \Illuminate\Http\Request::createFromBase(Request::create(
-                        $request->getUri(),
-                        $request->getMethod(),
-                        $request->getQueryParams(),
-                        $request->getCookieParams(),
-                        $request->getUploadedFiles(),
-                        $request->getServerParams(),
-                        $request->getBody()
-                    ))
+                    Request::createFromBase((new HttpFoundationFactory)->createRequest($request))
                 );
             })
         );

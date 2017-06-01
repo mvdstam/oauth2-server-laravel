@@ -67,7 +67,7 @@ class AuthorizationCodeGrantTypeTest extends AbstractGrantTypeTest
                     'username' => $this->username,
                     'password' => $this->password
                 ]
-            ], $cookieHeaders)
+            ], ['Cookie' => $cookieHeaders])
             ->seeStatusCode(302);
 
         $url = parse_url($this->response->headers->get('location'));

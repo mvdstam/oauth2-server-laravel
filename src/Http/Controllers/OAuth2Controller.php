@@ -4,7 +4,6 @@
 namespace Mvdstam\Oauth2ServerLaravel\Http\Controllers;
 
 
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
@@ -76,11 +75,10 @@ class OAuth2Controller extends Controller
      * Finalizes the authorization process and returns an access code.
      *
      * @param UserRepositoryInterface $users
-     * @param Request $request
-     * @param ResponseInterface $response
+     * @param ServerRequestInterface $response
      * @return ResponseInterface
      */
-    public function completeAuthorization(UserRepositoryInterface $users, Request $request, ResponseInterface $response)
+    public function completeAuthorization(UserRepositoryInterface $users, ServerRequestInterface $request, ResponseInterface $response)
     {
         throw new RuntimeException('Not implemented');
     }
