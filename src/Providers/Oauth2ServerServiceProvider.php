@@ -101,13 +101,19 @@ class Oauth2ServerServiceProvider extends ServiceProvider
          * OAuth2 Authorization server
          */
         $this->app->singleton(AuthorizationServer::class, function() {
-            return new AuthorizationServer(
+            $authServer = new AuthorizationServer(
                 app(ClientRepositoryInterface::class),
                 app(AccessTokenRepositoryInterface::class),
                 app(ScopeRepositoryInterface::class),
                 app('oauth2-server.key.private'),
                 app('oauth2-server.key.public')
             );
+
+            if (method_exists($authServer, 'setEncryptionKey')) {
+                call_user_func([$authServer, 'setEncryptionKey'], env('APP_KEY'));
+            }
+
+            return $authServer;
         });
 
         /*
